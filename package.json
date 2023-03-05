@@ -1,44 +1,65 @@
 {
-  "name": "rapunzel",
-  "version": "1.0.0",
-  "description": "This project was bootstrapped with Fastify-CLI.",
-  "main": "app.ts",
-  "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts \"test/**/*.test.ts\"",
-    "start": "npm run build:ts && fastify start -l info dist/app.js",
-    "build:ts": "tsc",
-    "watch:ts": "tsc -w",
-    "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+  "name": "@4s1/rapunzel",
+  "version": "0.0.0",
+  "description": "Rapunzel API",
+  "keywords": [
+    "rapunzel",
+    "API",
+    "4s1"
+  ],
+  "homepage": "https://github.com/4s1-org/rapunzel#readme",
+  "bugs": {
+    "url": "https://github.com/4s1-org/rapunzel/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/4s1-org/rapunzel.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/4s1-org/rapunzel/issues"
+  "license": "MIT",
+  "author": "Steffen <steffen@4s1.de>",
+  "type": "module",
+  "main": "./dist/app.js",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "build:dev": "pnpm run build --project tsconfig.dev.json",
+    "dev": "pnpm run build:dev && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"pnpm:watch:ts\" \"pnpm:dev:start\"",
+    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js",
+    "lbt": "pnpm run lint && pnpm run build && pnpm run test",
+    "lint": "eslint --ext .ts src/ && prettier --check .",
+    "lint:fix": "eslint --ext .ts --fix src/ && prettier --write .",
+    "start": "pnpm run build && fastify start -l info dist/app.js",
+    "test": "ava",
+    "test:cov": "c8 ava",
+    "test:watch": "ava --watch",
+    "watch:ts": "tsc -w"
   },
-  "homepage": "https://github.com/4s1-org/rapunzel#readme",
+  "prettier": "@4s1/eslint-config",
   "dependencies": {
-    "fastify": "^4.0.0",
-    "fastify-plugin": "^4.0.0",
     "@fastify/autoload": "^5.0.0",
     "@fastify/sensible": "^5.0.0",
-    "fastify-cli": "^5.7.1"
+    "fastify": "^4.0.0",
+    "fastify-cli": "^5.7.1",
+    "fastify-plugin": "^4.0.0"
   },
   "devDependencies": {
+    "@4s1/eslint-config": "^6.1.0",
+    "@4s1/ts-config": "^3.0.1",
     "@types/node": "^18.0.0",
     "@types/tap": "^15.0.5",
-    "ts-node": "^10.4.0",
+    "ava": "^5.2.0",
+    "c8": "^7.13.0",
     "concurrently": "^7.0.0",
+    "eslint": "^8.35.0",
     "fastify-tsconfig": "^1.0.1",
-    "tap": "^16.1.0",
+    "prettier": "^2.8.4",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
+  },
+  "engines": {
+    "node": "18",
+    "pnpm": "7"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "javascript.preferences.importModuleSpecifierEnding": "js",
+    "typescript.preferences.importModuleSpecifierEnding": "js",
+    "javascript.preferences.importModuleSpecifier": "relative",
+    "typescript.preferences.importModuleSpecifier": "relative",
+
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    "window.title": "Rapunzel",
+    "cSpell.words": ["autoload"]
+  }
+}
