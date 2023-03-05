@@ -31,6 +31,7 @@
     "lint": "eslint --ext .ts src/ && prettier --check .",
     "lint:fix": "eslint --ext .ts --fix src/ && prettier --write .",
     "start": "pnpm run build && fastify start -l info dist/app.js",
+    "start:prod": "fastify start -l info dist/app.js",
     "test": "ava",
     "test:cov": "c8 ava",
     "test:watch": "ava --watch",
