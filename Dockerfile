@@ -1,11 +1,6 @@
 
 
-FROM node:18.14.2-alpine as builder
-
-RUN mkdir -p /app
-WORKDIR /app
-
-RUN npm i pnpm -g
+FROM ghcr.io/4s1-org/node:alpine as builder
 
 COPY ["package.json", "pnpm-lock.yaml", "./"]
 RUN pnpm install
@@ -20,7 +15,6 @@ RUN find dist -name "*.map" -type f -delete && \
     rm -rf node_modules && \
     pnpm install -r --offline --prod
 
-
 # ---------------------------
 FROM ghcr.io/4s1-org/node:alpine
 
@@ -33,11 +27,9 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
 
-USER root
 RUN chown -R ${PUID}:${PGID} /app
-USER ${PUID}
 
+USER ${PUID}
 EXPOSE 3000/tcp
 #VOLUME ["/app/data"]
 CMD ["pnpm", "run", "start:prod"]
-
