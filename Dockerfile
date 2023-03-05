@@ -22,23 +22,22 @@ RUN find dist -name "*.map" -type f -delete && \
 
 
 # ---------------------------
-FROM node:18.14.2-alpine
+FROM ghcr.io/4s1-org/node:alpine
 
 ARG VERSION
 
 ENV VERSION=$VERSION
-ENV TZ=Europe/Berlin
-ENV LANG=de_DE.UTF-8
 ENV NODE_ENV=production
-
-RUN mkdir -p /app
-WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
 
+USER root
+RUN chown -R ${PUID}:${PGID} /app
+USER ${PUID}
+
 EXPOSE 3000/tcp
 #VOLUME ["/app/data"]
-CMD ["npm", "run", "start:prod"]
+CMD ["pnpm", "run", "start:prod"]
 
