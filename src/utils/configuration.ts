@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 const emptyConfiguration: ConfigurationType = {
   fuelPrices: {
     enabled: false,
+    apiKey: '',
     groups: [],
   },
 };
