@@ -1,8 +1,6 @@
 {
   "extends": "@4s1/ts-config/tsconfig-es2020.json",
   "compilerOptions": {
-    "sourceMap": true,
-
     /* Basic Options */
     "outDir": "./dist",     /* Redirect output structure to the directory. */
     "rootDir": "./src",     /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
