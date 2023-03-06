@@ -1,6 +1,6 @@
 {
   "name": "@4s1/rapunzel",
-  "version": "0.0.1-dev.3",
+  "version": "0.0.1-dev.5",
   "description": "Rapunzel API",
   "keywords": [
     "rapunzel",
@@ -43,7 +43,8 @@
     "@fastify/sensible": "^5.0.0",
     "fastify": "^4.0.0",
     "fastify-cli": "^5.7.1",
-    "fastify-plugin": "^4.0.0"
+    "fastify-plugin": "^4.0.0",
+    "yaml": "^2.2.1"
   },
   "devDependencies": {
     "@4s1/eslint-config": "^6.1.0",

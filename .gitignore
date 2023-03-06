@@ -23,3 +23,4 @@ dist
 
 # custom
 /.pnpm-debug.log
+/data

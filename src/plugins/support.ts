@@ -1,4 +1,5 @@
 import fp from 'fastify-plugin';
+import type { ConfigurationType } from '../utils/configuration.type.js';
 
 export interface SupportPluginOptions {
   // Specify Support plugin options here
@@ -15,6 +16,6 @@ export default fp<SupportPluginOptions>(async (fastify, _opts) => {
 // When using .decorate you have to specify added properties for Typescript
 declare module 'fastify' {
   export interface FastifyInstance {
-    someSupport(): string;
+    configuration: ConfigurationType;
   }
 }
