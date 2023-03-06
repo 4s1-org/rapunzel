@@ -3,6 +3,7 @@ import AutoLoad from '@fastify/autoload';
 import type { AutoloadPluginOptions } from '@fastify/autoload';
 import type { FastifyPluginAsync } from 'fastify';
 import { fileURLToPath } from 'node:url';
+import { loadConfiguration } from './utils/configuration.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,6 +17,7 @@ const options: AppOptions = {};
 
 const app: FastifyPluginAsync<AppOptions> = async (fastify, opts): Promise<void> => {
   // Place here your custom code!
+  fastify.decorate('configuration', loadConfiguration());
 
   // Do not touch the following lines
 
