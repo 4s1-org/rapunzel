@@ -17,7 +17,6 @@ const __dirname = dirname(__filename);
 
 export function loadConfiguration(): ConfigurationType {
   let config = {};
-  console.log('load');
   const configFile = join(__dirname, '..', '..', 'data', 'config.yaml');
 
   if (existsSync(configFile)) {

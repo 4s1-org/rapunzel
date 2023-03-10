@@ -101,6 +101,8 @@ weather:
 
 ### Fuel prices
 
+> ℹ️ A maximum of 10 gas stations are possible.
+
 ```yaml
 fuelPrices:
   # Enable service
@@ -123,3 +125,5 @@ fuelPrices:
         - name: Second station
           id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
+
+Route: http://<ip>:<port>/api/fuel-prices
