@@ -1,5 +1,6 @@
 import fp from 'fastify-plugin';
 import type { ConfigurationType } from '../utils/configuration.type.js';
+import type { StateType } from '../utils/state.type.js';
 
 export interface SupportPluginOptions {
   // Specify Support plugin options here
@@ -17,5 +18,6 @@ export default fp<SupportPluginOptions>(async (fastify, _opts) => {
 declare module 'fastify' {
   export interface FastifyInstance {
     configuration: ConfigurationType;
+    state: StateType;
   }
 }
