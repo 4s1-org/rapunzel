@@ -11,6 +11,6 @@
     "typescript.preferences.importModuleSpecifier": "relative",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "window.title": "Rapunzel",
-    "cSpell.words": ["autoload"]
+    "cSpell.words": ["autoload", "tankerkönig", "traefik"]
   }
 }
